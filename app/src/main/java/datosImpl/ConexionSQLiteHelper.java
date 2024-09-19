@@ -21,8 +21,8 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(BaseSQLite.SQL_DROP_TABLE_USUARIO);
-        db.execSQL(BaseSQLite.SQL_DROP_TABLE_PARQUEO);
-        onCreate(db);
+      db.execSQL(BaseSQLite.SQL_DROP_TABLE_USUARIO);
+      //  db.execSQL(BaseSQLite.SQL_DROP_TABLE_PARQUEO);
+       // onCreate(db);
     }
 }

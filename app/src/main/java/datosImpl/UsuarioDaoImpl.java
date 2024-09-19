@@ -76,6 +76,10 @@ public class UsuarioDaoImpl implements IUsuarioDao {
         return usuario;
     }
 
+
+
+
+
     @Override
     public boolean insertar(Usuario usuario, Context context) {
         boolean resultado = false;
@@ -85,7 +89,9 @@ public class UsuarioDaoImpl implements IUsuarioDao {
             nuevoUsuario.put(BaseSQLite.COL_NOMBRE, usuario.getNombre());
             nuevoUsuario.put(BaseSQLite.COL_EMAIL, usuario.getEmail());
             nuevoUsuario.put(BaseSQLite.COL_PASSWORD, usuario.getPassword());
+
             long id = con.insert(BaseSQLite.TABLE_USUARIO, null, nuevoUsuario);
+
             if (id > 0) {
                 resultado = true;
             }

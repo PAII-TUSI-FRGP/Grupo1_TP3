@@ -20,4 +20,15 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+
+    <!--stings de activity registro -->
+
+    <string name="registrarseHeader"> Registrarse</string>
+    <string name="Nombre">Nombre</string>
+    <string name="Correo">Correo electrónico</string>
+    <string name="contrasenia">Contraseña</string>
+    <string name="repertir_contrasenia">Repetir contraseña</string>
+    <string name="aceptar">Aceptar</string>
+
+
 </resources>

@@ -79,4 +79,14 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Usuario no encontrado, intente de nuevo porfavor", Toast.LENGTH_SHORT).show();
         }
     }
+
+    public void irRegistro(View view) {
+        Intent intent = new Intent(this, RegistrarseActivity.class);
+        startActivity(intent);
+
+
+
+
+    }
+
 }
