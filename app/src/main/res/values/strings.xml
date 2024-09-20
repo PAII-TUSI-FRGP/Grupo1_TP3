@@ -29,6 +29,9 @@
     <string name="contrasenia">Contraseña</string>
     <string name="repertir_contrasenia">Repetir contraseña</string>
     <string name="aceptar">Aceptar</string>
+    <string name="menu_parqueos">Parqueos</string>
+    <string name="menu_micuenta">Mi Cuenta</string>
+
 
 
 </resources>
