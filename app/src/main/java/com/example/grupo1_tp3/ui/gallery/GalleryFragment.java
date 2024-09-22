@@ -1,5 +1,11 @@
 package com.example.grupo1_tp3.ui.gallery;
 
+import static com.example.grupo1_tp3.MainActivity.EMAIL_USUARIO;
+import static com.example.grupo1_tp3.MainActivity.NOMBRE_USUARIO;
+import static com.example.grupo1_tp3.MainActivity.SHARED_PREFS_LOGIN_DATA;
+
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +26,15 @@ public class GalleryFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         GalleryViewModel galleryViewModel =
                 new ViewModelProvider(this).get(GalleryViewModel.class);
+
+
+        // Recuperar los datos de SharedPreferences
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREFS_LOGIN_DATA, Context.MODE_PRIVATE);
+        String nombreUsuario = sharedPreferences.getString(NOMBRE_USUARIO, "Nombre no disponible");
+        String emailUsuario = sharedPreferences.getString(EMAIL_USUARIO, "Email no disponible");
+
+        // Llamar al método para establecer los valores en el ViewModel
+        galleryViewModel.setUserInfo(nombreUsuario, emailUsuario);
 
         binding = FragmentGalleryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
