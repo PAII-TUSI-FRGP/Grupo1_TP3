@@ -25,8 +25,8 @@ public class BaseSQLite {
     public final static String COL_NOMBRE_PAR = "Nombre_Par";
     public final static String SQL_DROP_TABLE_PARQUEO = "DROP TABLE IF EXISTS " + TABLE_PARQUEO + ";";
     public final static String SQL_CREATE_TABLE_PARQUEO = "CREATE TABLE IF NOT EXISTS " + TABLE_PARQUEO + " (" +
-            COL_MATRICULA + " INTEGER NOT NULL," +
-            COL_TIEMPO + " TEXT," +
+            COL_MATRICULA + " TEXT NOT NULL," +
+            COL_TIEMPO + " TEXT NOT NULL," +
             COL_NOMBRE_PAR + " TEXT NOT NULL," +
             "CONSTRAINT PK_Parqueo PRIMARY KEY (" + COL_MATRICULA + ")," +
             "CONSTRAINT FK_Parqueo_Usuario FOREIGN KEY (" + COL_NOMBRE_PAR + ") REFERENCES " + TABLE_USUARIO + "(" + COL_NOMBRE + ")" +
