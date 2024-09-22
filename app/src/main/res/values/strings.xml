@@ -31,7 +31,7 @@
     <string name="aceptar">Aceptar</string>
     <string name="menu_parqueos">Parqueos</string>
     <string name="menu_micuenta">Mi Cuenta</string>
-
+    <string name="Cerrar_Sesion">Cerrar Sesion</string>
 
 
 </resources>
