@@ -1,5 +1,10 @@
 package com.example.grupo1_tp3;
 
+import static com.example.grupo1_tp3.MainActivity.EMAIL_USUARIO;
+import static com.example.grupo1_tp3.MainActivity.NOMBRE_USUARIO;
+import static com.example.grupo1_tp3.MainActivity.SHARED_PREFS_LOGIN_DATA;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
@@ -13,6 +18,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
+import android.widget.TextView;
 
 import com.example.grupo1_tp3.databinding.ActivityHomeBinding;
 
@@ -28,6 +34,8 @@ public class HomeActivity extends AppCompatActivity {
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
+
         setSupportActionBar(binding.appBarHome.toolbar);
         binding.appBarHome.fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +47,17 @@ public class HomeActivity extends AppCompatActivity {
         });
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
+
+        View headerView = binding.navView.getHeaderView(0);
+
+        TextView nombreTextView = headerView.findViewById(R.id.nav_header_nombre_usuario);
+        TextView emailTextView = headerView.findViewById(R.id.nav_header_email_usuario);
+        // Recuperar los datos de SharedPreferences
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS_LOGIN_DATA, MODE_PRIVATE);
+        String nombreUsuario = sharedPreferences.getString(NOMBRE_USUARIO, "Nombre no disponible");
+        String emailUsuario = sharedPreferences.getString(EMAIL_USUARIO, "Email no disponible");
+        nombreTextView.setText(nombreUsuario);
+        emailTextView.setText(emailUsuario);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(

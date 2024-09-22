@@ -16,4 +16,10 @@ public class GalleryViewModel extends ViewModel {
     public LiveData<String> getText() {
         return mText;
     }
+
+    // Método para actualizar el texto con nombre y email
+    public void setUserInfo(String nombreUsuario, String emailUsuario) {
+        String combinedText = "Nombre: " + nombreUsuario + "\nEmail: " + emailUsuario;
+        mText.setValue(combinedText);
+    }
 }
