@@ -2,6 +2,7 @@ package com.example.grupo1_tp3;
 
 import static com.example.grupo1_tp3.MainActivity.EMAIL_USUARIO;
 import static com.example.grupo1_tp3.MainActivity.NOMBRE_USUARIO;
+import static com.example.grupo1_tp3.MainActivity.PASSWORD_USUARIO;
 import static com.example.grupo1_tp3.MainActivity.SHARED_PREFS_LOGIN_DATA;
 
 import android.content.Intent;
@@ -37,14 +38,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarHome.toolbar);
-        binding.appBarHome.btnExit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null)
-                        .setAnchorView(R.id.btnExit).show();
-            }
-        });
+
 
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
@@ -57,6 +51,7 @@ public class HomeActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS_LOGIN_DATA, MODE_PRIVATE);
         String nombreUsuario = sharedPreferences.getString(NOMBRE_USUARIO, "Nombre no disponible");
         String emailUsuario = sharedPreferences.getString(EMAIL_USUARIO, "Email no disponible");
+        String passwordUsuario = sharedPreferences.getString(PASSWORD_USUARIO, "Email no disponible");
         nombreTextView.setText(nombreUsuario);
         emailTextView.setText(emailUsuario);
 

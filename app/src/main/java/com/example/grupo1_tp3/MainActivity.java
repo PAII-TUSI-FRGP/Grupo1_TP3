@@ -28,20 +28,10 @@ public class MainActivity extends AppCompatActivity {
     private TextView tv_registar;
     private UsuarioNegImpl usuNegImpl = new UsuarioNegImpl();
 
-
-
-
     public static final String SHARED_PREFS_LOGIN_DATA = "sharedPrefsLoginData";
     public static final String NOMBRE_USUARIO = "nombreUsuario";
     public static final String EMAIL_USUARIO = "emailUsuario";
     public static final String PASSWORD_USUARIO = "passwordUsuario";
-
-
-
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
