@@ -8,9 +8,11 @@
             android:id="@+id/nav_parqueos"
             android:icon="@drawable/icon_car"
             android:title="@string/menu_parqueos" />
+
         <item
-            android:id="@+id/nav_miCuenta"
-            android:icon="@android:drawable/ic_menu_myplaces"
-            android:title="@string/menu_micuenta" />
+            android:id="@+id/nav_CerrarSesion"
+            android:icon="@drawable/baseline_exit_to_app_24"
+            android:title="@string/Cerrar_Sesion"
+             />
     </group>
 </menu>

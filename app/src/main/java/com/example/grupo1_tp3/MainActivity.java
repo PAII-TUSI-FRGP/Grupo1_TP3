@@ -1,5 +1,6 @@
 package com.example.grupo1_tp3;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -31,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     public static final String NOMBRE_USUARIO = "nombreUsuario";
     public static final String EMAIL_USUARIO = "emailUsuario";
     public static final String PASSWORD_USUARIO = "passwordUsuario";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,9 +84,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, RegistrarseActivity.class);
         startActivity(intent);
 
-
-
-
     }
+
+
 
 }
