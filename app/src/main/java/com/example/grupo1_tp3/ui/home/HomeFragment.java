@@ -17,15 +17,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.grupo1_tp3.R;
+import com.example.grupo1_tp3.daoSQLite.DaoHelperParkeo;
 import com.example.grupo1_tp3.databinding.FragmentHomeBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -34,10 +32,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-import entidad.Parkeos;
-import entidad.Usuario;
-import negocioImpl.ParkeosNegImpl;
-import negocioImpl.UsuarioNegImpl;
+import com.example.grupo1_tp3.entidad.Parkeo;
+import com.example.grupo1_tp3.entidad.Usuario;
 
 public class HomeFragment extends Fragment {
 
@@ -45,7 +41,6 @@ public class HomeFragment extends Fragment {
     private GridView gridView;
     private ArrayList<String> parkingsList;
     private ArrayAdapter<String> adapter;
-    private ParkeosNegImpl parkeosNegImpl = new ParkeosNegImpl();
 
     @Nullable
     @Override
@@ -53,7 +48,6 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         gridView = view.findViewById(R.id.gridView);
-        //parqueosNegImpl = new ParkeosNegImpl(getActivity());
         parkingsList = new ArrayList<>();
 
         loadParkingData();
@@ -65,13 +59,14 @@ public class HomeFragment extends Fragment {
 
         return view;
     }
+
     private void loadParkingData() {
-        List<Parkeos> parqueos = parkeosNegImpl.obtenerTodos(getActivity());
+        List<Parkeo> parqueos = DaoHelperParkeo.obtenerPorNombre(getContext().getSharedPreferences(SHARED_PREFS_LOGIN_DATA, Context.MODE_PRIVATE).getString(NOMBRE_USUARIO, ""), getContext());
 
         parkingsList.clear();
 
         // Recorrer la lista de parqueos obtenida
-        for (Parkeos parqueo : parqueos) {
+        for (Parkeo parqueo : parqueos) {
             parkingsList.add(parqueo.getMatricula());
             parkingsList.add(parqueo.getTiempo());
         }
@@ -80,9 +75,6 @@ public class HomeFragment extends Fragment {
         adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, parkingsList);
         gridView.setAdapter(adapter);
     }
-
-
-
 
     private void openRegisterParkingDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -98,16 +90,8 @@ public class HomeFragment extends Fragment {
 
         Context context = requireContext();
 
-
-
-
-
-
-
-
-
         btnRegister.setOnClickListener(view -> {
-            Parkeos OParkeos = new Parkeos();
+            Parkeo OParkeos = new Parkeo();
             OParkeos.setMatricula(etPlate.getText().toString());
             OParkeos.setTiempo(etTime.getText().toString());
 
@@ -120,13 +104,11 @@ public class HomeFragment extends Fragment {
             Log.d("NOMBRE", OUsuario.getNombre());
             OParkeos.setNombre_Par(OUsuario);
 
-
-
-                // Aquí insertarías el nuevo parqueo y luego recargarías los datos
-                if(!parkeosNegImpl.insertar(OParkeos,getActivity()))
-                    Toast.makeText(context, "Parqueo existente", Toast.LENGTH_SHORT).show();;
-                loadParkingData();  // Recargar los datos después de insertar
-                dialog.dismiss();
+            // Aquí insertarías el nuevo parqueo y luego recargarías los datos
+            if (!DaoHelperParkeo.insertar(OParkeos, getContext()))
+                Toast.makeText(context, "Parqueo existente", Toast.LENGTH_SHORT).show();
+            loadParkingData();  // Recargar los datos después de insertar
+            dialog.dismiss();
 
         });
 
@@ -156,8 +138,7 @@ public class HomeFragment extends Fragment {
 
     // Método para eliminar el parqueo de la base de datos
     private void eliminarParqueo(String matricula) {
-        parkeosNegImpl.eliminar(matricula,getActivity() );
-
+        DaoHelperParkeo.eliminar(matricula, getContext());
     }
 
     @Override
