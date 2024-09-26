@@ -15,6 +15,7 @@
         <activity
             android:name=".RegistrarseActivity"
             android:exported="false"
+            android:label="@string/label_main"
             android:theme="@style/Theme.Grupo1_TP3.NoActionBar"/>
         <activity
             android:name=".HomeActivity"
