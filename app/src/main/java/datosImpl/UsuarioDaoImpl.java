@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import datos.IUsuarioDao;
-import entidad.Usuario;
+import com.example.grupo1_tp3.entidad.Usuario;
 import utilidades.BaseSQLite;
 
 public class UsuarioDaoImpl implements IUsuarioDao {

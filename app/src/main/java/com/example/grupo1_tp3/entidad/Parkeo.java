@@ -1,15 +1,15 @@
-package entidad;
+package com.example.grupo1_tp3.entidad;
 
 
-public class Parkeos {
+public class Parkeo {
     private Usuario Nombre_Par;
     private String Matricula;
     private String Tiempo;
     // Constructor, getters y setters
-    public Parkeos() {
+    public Parkeo() {
     }
 
-    public Parkeos(Usuario nombre, String matricula, String tiempo) {
+    public Parkeo(Usuario nombre, String matricula, String tiempo) {
         this.Nombre_Par = nombre;
         this.Matricula = matricula;
         this.Tiempo = tiempo;

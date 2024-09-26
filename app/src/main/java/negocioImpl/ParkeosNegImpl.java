@@ -5,8 +5,7 @@ import android.content.Context;
 import java.util.List;
 
 import datosImpl.ParkeosDaoImpl;
-import entidad.Parkeos;
-import entidad.Usuario;
+import com.example.grupo1_tp3.entidad.Parkeo;
 import negocio.IParkeosNeg;
 
 
@@ -14,11 +13,11 @@ public class ParkeosNegImpl implements IParkeosNeg {
     private ParkeosDaoImpl parDaoImpl = new ParkeosDaoImpl();
 
     @Override
-    public List<Parkeos> obtenerTodos(Context context) {
+    public List<Parkeo> obtenerTodos(Context context) {
         return parDaoImpl.obtenerTodos(context);
     }
     @Override
-    public boolean insertar(Parkeos parkeos, Context context) {
+    public boolean insertar(Parkeo parkeos, Context context) {
         return parDaoImpl.insertar(parkeos, context);
     }
     @Override

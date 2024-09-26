@@ -4,7 +4,7 @@ import android.content.Context;
 
 import java.util.List;
 
-import entidad.Usuario;
+import com.example.grupo1_tp3.entidad.Usuario;
 
 public interface IUsuarioDao {
     public List<Usuario> obtenerTodos(Context context);

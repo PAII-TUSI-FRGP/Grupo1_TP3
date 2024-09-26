@@ -5,15 +5,14 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import datos.IParkeosDao;
-import entidad.Parkeos;
-import entidad.Usuario;
-import negocio.IParkeosNeg;
+import com.example.grupo1_tp3.entidad.Parkeo;
+import com.example.grupo1_tp3.entidad.Usuario;
+
 import utilidades.BaseSQLite;
 
 
@@ -21,8 +20,8 @@ public class ParkeosDaoImpl implements IParkeosDao {
     private SQLiteDatabase con;
     private UsuarioDaoImpl UsuDaoImpl = new UsuarioDaoImpl();
     //@Override
-    public List<Parkeos> obtenerTodos(Context context) {
-        List<Parkeos> lista = new ArrayList<Parkeos>();
+    public List<Parkeo> obtenerTodos(Context context) {
+        List<Parkeo> lista = new ArrayList<Parkeo>();
         try {
             con = new ConexionSQLiteHelper(context).getReadableDatabase();
             Cursor cursor = con.rawQuery(
@@ -34,7 +33,7 @@ public class ParkeosDaoImpl implements IParkeosDao {
                     null);
             if (cursor.moveToFirst()) {
                 do {
-                    Parkeos parkeos = new Parkeos();
+                    Parkeo parkeos = new Parkeo();
                     parkeos.setMatricula(cursor.getString(0));
                     parkeos.setTiempo(cursor.getString(1));
                     Usuario OUsuario = new Usuario();
@@ -55,7 +54,7 @@ public class ParkeosDaoImpl implements IParkeosDao {
     }
 
  //   @Override
-    public boolean insertar(Parkeos parkeos, Context context) {
+    public boolean insertar(Parkeo parkeos, Context context) {
         boolean resultado = false;
         try {
             con = new ConexionSQLiteHelper(context).getWritableDatabase();

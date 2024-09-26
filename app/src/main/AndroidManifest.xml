@@ -23,7 +23,8 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/label_main" >
+            android:label="@string/label_main"
+            android:theme="@style/Theme.Grupo1_TP3">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

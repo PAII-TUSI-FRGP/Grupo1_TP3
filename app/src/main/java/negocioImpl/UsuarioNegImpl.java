@@ -5,7 +5,7 @@ import android.content.Context;
 import java.util.List;
 
 import datosImpl.UsuarioDaoImpl;
-import entidad.Usuario;
+import com.example.grupo1_tp3.entidad.Usuario;
 import negocio.IUsuarioNeg;
 
 public class UsuarioNegImpl implements IUsuarioNeg {

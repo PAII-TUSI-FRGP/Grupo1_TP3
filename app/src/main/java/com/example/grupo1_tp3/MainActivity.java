@@ -1,10 +1,11 @@
 package com.example.grupo1_tp3;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,21 +13,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import entidad.Usuario;
-import negocio.IUsuarioNeg;
-import negocioImpl.UsuarioNegImpl;
+import com.example.grupo1_tp3.daoSQLite.DaoHelperUsuario;
 
 public class MainActivity extends AppCompatActivity {
     private EditText et_nombre;
     private EditText et_password;
     private Button btn_ingresar;
     private TextView tv_registar;
-    private UsuarioNegImpl usuNegImpl = new UsuarioNegImpl();
 
     public static final String SHARED_PREFS_LOGIN_DATA = "sharedPrefsLoginData";
     public static final String NOMBRE_USUARIO = "nombreUsuario";
@@ -50,27 +49,37 @@ public class MainActivity extends AppCompatActivity {
         tv_registar = findViewById(R.id.tv_registar);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_action_bar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
+
     public void iniciarSesion(View view) {
         String nombre = et_nombre.getText().toString();
         String password = et_password.getText().toString();
 
-        if(nombre.isEmpty()) {
+        if (nombre.isEmpty()) {
             Toast.makeText(this, "Debe ingresar nombre ", Toast.LENGTH_SHORT).show();
             return;
         }
-        if(password.isEmpty()) {
+        if (password.isEmpty()) {
             Toast.makeText(this, "Debe ingresar contraseña ", Toast.LENGTH_SHORT).show();
             return;
         }
-
-        if (usuNegImpl.obtenerUno(nombre, this).getNombre() != null) {
+        if (DaoHelperUsuario.obtenerUno(nombre, this).getNombre() != null) {
             Toast.makeText(this, "Bienvenido " + nombre, Toast.LENGTH_SHORT).show();
 
             SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS_LOGIN_DATA, MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString(NOMBRE_USUARIO, nombre);
-            editor.putString(EMAIL_USUARIO, usuNegImpl.obtenerUno(nombre, this).getEmail());
-            editor.putString(PASSWORD_USUARIO, usuNegImpl.obtenerUno(nombre, this).getPassword());
+            editor.putString(EMAIL_USUARIO, DaoHelperUsuario.obtenerUno(nombre, this).getEmail());
+            editor.putString(PASSWORD_USUARIO, DaoHelperUsuario.obtenerUno(nombre, this).getPassword());
             editor.commit();
 
             Intent intent = new Intent(this, HomeActivity.class);
@@ -83,9 +92,5 @@ public class MainActivity extends AppCompatActivity {
     public void irRegistro(View view) {
         Intent intent = new Intent(this, RegistrarseActivity.class);
         startActivity(intent);
-
     }
-
-
-
 }

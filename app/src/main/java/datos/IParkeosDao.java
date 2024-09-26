@@ -4,11 +4,10 @@ import android.content.Context;
 
 import java.util.List;
 
-import entidad.Parkeos;
-import entidad.Usuario;
+import com.example.grupo1_tp3.entidad.Parkeo;
 
 
 public interface IParkeosDao {
-    public List<Parkeos> obtenerTodos(Context context);
-    public boolean insertar(Parkeos parkeos, Context context);
+    public List<Parkeo> obtenerTodos(Context context);
+    public boolean insertar(Parkeo parkeos, Context context);
 }

@@ -1,4 +1,4 @@
-package entidad;
+package com.example.grupo1_tp3.entidad;
 
 public class Usuario {
     private String nombre;
