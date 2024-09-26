@@ -2,12 +2,19 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Grupo1_TP3" parent="Theme.Material3.DayNight">
         <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimary">@color/rojo</item>
+        <item name="colorPrimaryVariant">@color/rojo</item>
+        <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/secundary</item>
+        <item name="colorSecondary">@color/azul</item>
+        <item name="colorSecondaryVariant">@color/azul</item>
+        <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimary</item>
+        <!-- Title text color -->
+        <item name="android:textColorPrimary">@color/white</item>
+        <!-- Navigation bar color -->
+        <item name="android:navigationBarColor">@color/white</item>
     </style>
 </resources>

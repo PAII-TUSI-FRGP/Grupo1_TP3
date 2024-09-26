@@ -7,6 +7,15 @@
     android:layout_height="match_parent"
     tools:context=".RegistrarseActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_registar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/Theme.Grupo1_TP3.AppBarOverlay"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/Theme.Grupo1_TP3.PopupOverlay"/>
+
     <ScrollView
         android:id="@+id/scrollView3"
         android:layout_width="0dp"

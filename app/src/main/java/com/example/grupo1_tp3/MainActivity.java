@@ -3,7 +3,6 @@ package com.example.grupo1_tp3;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -52,6 +51,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_action_bar, menu);
+        // Set Action Bar color
+        getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.color.rojo, getTheme()));
+        // Set Status Bar color
+        getWindow().setStatusBarColor(getResources().getColor(R.color.rojo, getTheme()));
+        // Set Navigation Bar color
+        getWindow().setNavigationBarColor(getResources().getColor(R.color.white, getTheme()));
         return true;
     }
 

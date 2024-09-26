@@ -2,12 +2,16 @@ package com.example.grupo1_tp3;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -37,6 +41,21 @@ public class RegistrarseActivity extends AppCompatActivity {
         correo = findViewById(R.id.txtCorreoRegistro);
         pass = findViewById(R.id.txtContraseniaRegistro);
         confirmarPass = findViewById(R.id.txtRepetirContrasenia);
+
+        Toolbar toolbar = findViewById(R.id.tb_registar);
+        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_action_bar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 
     public void registrarse(View view) {
